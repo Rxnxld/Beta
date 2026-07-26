@@ -1,7 +1,7 @@
 #!/bin/bash
 cat > .env << EOF
 APP_ENV=${APP_ENV:-production}
-APP_DEBUG=${APP_DEBUG:-true}
+APP_DEBUG=${APP_DEBUG:-false}
 APP_KEY=${APP_KEY:-}
 DB_CONNECTION=${DB_CONNECTION:-mysql}
 DB_HOST=${DB_HOST:-127.0.0.1}
