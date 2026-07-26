@@ -16,15 +16,15 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 
 COPY composer.json ./
-
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 COPY . .
 
 RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions bootstrap/cache \
     && cp .env.example .env 2>/dev/null || true \
     && php artisan key:generate --force \
-    && chmod -R 777 storage bootstrap/cache
+    && chmod -R 777 storage bootstrap/cache \
+    && composer dump-autoload
 
 EXPOSE 8000
 
