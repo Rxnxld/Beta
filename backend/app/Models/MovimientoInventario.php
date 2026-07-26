@@ -9,6 +9,8 @@ class MovimientoInventario extends Model
 {
     use HasFactory;
 
+    protected $table = 'movimientos_inventario';
+
     protected $fillable = [
         'producto_id',
         'tipo',

@@ -9,6 +9,8 @@ class CuentaCobrar extends Model
 {
     use HasFactory;
 
+    protected $table = 'cuentas_cobrar';
+
     protected $fillable = [
         'venta_id',
         'cliente_id',
