@@ -11,8 +11,11 @@ Route::get('/setup', function () {
     }
 
     try {
-        Artisan::call('migrate:fresh', ['--force' => true, '--seed' => true]);
+        Artisan::call('migrate', ['--force' => true]);
         $output = Artisan::output();
+
+        Artisan::call('db:seed', ['--force' => true]);
+        $output .= "\n" . Artisan::output();
 
         return response()->json([
             'success' => true,

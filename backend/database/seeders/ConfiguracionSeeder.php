@@ -21,7 +21,7 @@ class ConfiguracionSeeder extends Seeder
         ];
 
         foreach ($configuraciones as $config) {
-            Configuracion::create($config);
+            Configuracion::updateOrCreate(['clave' => $config['clave']], $config);
         }
     }
 }
