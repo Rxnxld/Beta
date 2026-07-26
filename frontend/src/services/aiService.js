@@ -1,3 +1,3 @@
 import api from './api'
 
-export const consultar = (pregunta) => api.post('/ai/consultar/', { pregunta })
+export const consultar = (pregunta) => api.post('/api/ai/consultar', { pregunta })

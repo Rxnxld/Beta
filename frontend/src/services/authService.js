@@ -1,7 +1,7 @@
 import api from './api'
 
-export const login = (credentials) => api.post('/auth/login/', credentials)
+export const login = (credentials) => api.post('/api/login', credentials)
 
-export const logout = () => api.post('/auth/logout/')
+export const logout = () => api.post('/api/logout')
 
-export const getUser = () => api.get('/auth/user/')
+export const getUser = () => api.get('/api/user')
