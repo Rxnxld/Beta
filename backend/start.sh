@@ -1,5 +1,4 @@
 #!/bin/bash
-# Generar .env desde variables de entorno
 cat > .env << EOF
 APP_ENV=${APP_ENV:-production}
 APP_DEBUG=${APP_DEBUG:-false}
@@ -15,16 +14,8 @@ MYSQL_ATTR_SSL_VERIFY_SERVER_CERT=${MYSQL_ATTR_SSL_VERIFY_SERVER_CERT:-false}
 SANCTUM_STATEFUL_DOMAINS=${SANCTUM_STATEFUL_DOMAINS:-}
 EOF
 
-# Generar APP_KEY si no existe
 if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
-# Ejecutar migraciones si RUN_MIGRATE_ON_BOOT=true
-if [ "$RUN_MIGRATE_ON_BOOT" = "true" ]; then
-    php artisan migrate --force
-    php artisan db:seed --force
-fi
-
-# Iniciar servidor
 php artisan serve --host=0.0.0.0 --port=$PORT
