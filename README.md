@@ -2,7 +2,7 @@
 
 Sistema web profesional para pequeños y medianos negocios que permite administrar clientes, productos, ventas, facturas, inventario y cuentas por cobrar, con integración a WhatsApp Business y asistente con IA.
 
-## 🚀 Tecnologías
+## Tecnologías
 
 ### Frontend
 - React 19
@@ -29,7 +29,7 @@ Sistema web profesional para pequeños y medianos negocios que permite administr
 - WhatsApp Business API
 - Asistente con IA integrada (consultas a base de datos)
 
-## 📋 Requisitos
+##  Requisitos
 
 - PHP 8.2+
 - Composer 2
@@ -38,7 +38,7 @@ Sistema web profesional para pequeños y medianos negocios que permite administr
 - MySQL 8+
 - Extensiones PHP: BCMath, Ctype, Fileinfo, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML, GD
 
-## 🛠 Instalación
+##  Instalación
 
 ### 1. Clonar el repositorio
 
@@ -97,7 +97,7 @@ npm run dev
 | Vendedor | vendedor@vendedor.com | password |
 | Cajero | cajero@cajero.com | password |
 
-## 🏗 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```
 sistema-gestion/
@@ -129,7 +129,7 @@ sistema-gestion/
 └── README.md
 ```
 
-## 📦 Módulos del Sistema
+## Módulos del Sistema
 
 ### 1. Dashboard
 - Estadísticas en tiempo real (ventas hoy/mes, clientes, productos bajos)
@@ -193,7 +193,7 @@ sistema-gestion/
 - Configuración de WhatsApp
 - Modo oscuro/claro
 
-## 🔐 Roles y Permisos
+##  Roles y Permisos
 
 | Módulo | Admin | Vendedor | Cajero |
 |--------|-------|----------|--------|
@@ -209,7 +209,7 @@ sistema-gestion/
 | Configuración | ✅ | ❌ | ❌ |
 | Asistente IA | ✅ | ✅ | ❌ |
 
-## 🔌 API Endpoints
+##  API Endpoints
 
 ### Autenticación
 - `POST /api/login` - Iniciar sesión
@@ -286,7 +286,7 @@ sistema-gestion/
 - `puntos_clientes` - Puntos de clientes frecuentes
 - `notificaciones` - Notificaciones del sistema
 
-## 🎨 Personalización
+## Personalización
 
 ### Modo Oscuro
 El sistema incluye modo oscuro/claro. Puede cambiarse desde el botón en la barra superior.
@@ -301,7 +301,7 @@ Desde el módulo de Configuración puedes personalizar:
 - Porcentaje de IVA
 - Moneda
 
-## 📱 WhatsApp Business API
+##  WhatsApp Business API
 
 Para configurar WhatsApp Business:
 
@@ -315,7 +315,7 @@ Para configurar WhatsApp Business:
    WHATSAPP_ACCESS_TOKEN=tu_token
    ```
 
-## 🤖 Asistente IA
+##  Asistente IA
 
 El asistente IA funciona consultando directamente la base de datos. Las preguntas disponibles son:
 
@@ -328,12 +328,3 @@ El asistente IA funciona consultando directamente la base de datos. Las pregunta
 
 Este proyecto es de código abierto. Puedes usarlo, modificarlo y distribuirlo libremente.
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork del proyecto
-2. Crear rama feature (`git checkout -b feature/NuevaCaracteristica`)
-3. Commit cambios (`git commit -m 'Agrega nueva característica'`)
-4. Push a la rama (`git push origin feature/NuevaCaracteristica`)
-5. Abrir Pull Request
