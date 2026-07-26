@@ -1,0 +1,17 @@
+[build]
+builder = "NIXPACKS"
+
+[run]
+command = "php artisan serve --host=0.0.0.0 --port=$PORT"
+
+[[variables]]
+name = "APP_ENV"
+value = "production"
+
+[[variables]]
+name = "APP_DEBUG"
+value = "false"
+
+[[variables]]
+name = "DB_CONNECTION"
+value = "mysql"
