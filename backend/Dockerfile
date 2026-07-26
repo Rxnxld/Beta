@@ -24,8 +24,9 @@ RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/s
     && cp .env.example .env 2>/dev/null || true \
     && php artisan key:generate --force \
     && chmod -R 777 storage bootstrap/cache \
+    && chmod +x start.sh \
     && composer dump-autoload
 
 EXPOSE 8000
 
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+CMD ["/bin/bash", "start.sh"]
