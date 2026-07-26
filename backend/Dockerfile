@@ -1,16 +1,30 @@
 FROM php:8.2-cli
 
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpng-dev \
+    libcurl4-openssl-dev \
+    unzip \
+    curl \
+    && docker-php-ext-install pdo_mysql mbstring zip xml bcmath gd fileinfo \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 WORKDIR /app
+
+COPY composer.json ./
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
 COPY . .
 
-RUN apt-get update && apt-get install -y \
-    git unzip libpng-dev libonig-dev libxml2-dev curl \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && composer install --no-dev --optimize-autoloader
-
-RUN php artisan key:generate
+RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions bootstrap/cache \
+    && cp .env.example .env 2>/dev/null || true \
+    && php artisan key:generate --force \
+    && chmod -R 777 storage bootstrap/cache \
+    && composer dump-autoload
 
 EXPOSE 8000
 
