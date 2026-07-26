@@ -4,9 +4,10 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
+    libpng-dev \
     unzip \
     curl \
-    && docker-php-ext-install pdo_mysql mbstring zip \
+    && docker-php-ext-install pdo_mysql mbstring zip xml bcmath gd \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -15,7 +16,11 @@ WORKDIR /app
 
 COPY . .
 
-RUN composer install --no-dev --optimize-autoloader
+RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions bootstrap/cache \
+    && cp .env.example .env 2>/dev/null || true \
+    && composer install --optimize-autoloader \
+    && php artisan key:generate --force 2>/dev/null || true \
+    && chmod -R 777 storage bootstrap/cache
 
 EXPOSE 8000
 
