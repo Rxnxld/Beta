@@ -28,7 +28,7 @@ class ClienteController extends Controller
             $query->where('estado', $request->boolean('estado'));
         }
 
-        $clientes = $query->orderBy('created_at', 'desc')->paginate(15);
+        $clientes = $query->orderBy('created_at', 'desc')->get();
 
         return response()->json($clientes);
     }
@@ -78,7 +78,7 @@ class ClienteController extends Controller
         $ventas = $cliente->ventas()
             ->with('productos.producto')
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($ventas);
     }
@@ -90,7 +90,7 @@ class ClienteController extends Controller
         $pagos = $cliente->pagos()
             ->with('cuentaCobrar.venta')
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($pagos);
     }
@@ -102,7 +102,7 @@ class ClienteController extends Controller
         $cuentas = $cliente->cuentasCobrar()
             ->with('pagos')
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($cuentas);
     }

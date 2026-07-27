@@ -13,7 +13,7 @@ class FacturaController extends Controller
     {
         $facturas = Factura::with(['venta.cliente', 'venta.user'])
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($facturas);
     }

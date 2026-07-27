@@ -20,7 +20,7 @@ class NotificacionController extends Controller
                 ->orWhereNull('user_id');
         }
 
-        $notificaciones = $query->orderBy('created_at', 'desc')->paginate(15);
+        $notificaciones = $query->orderBy('created_at', 'desc')->limit(20)->get();
 
         return response()->json($notificaciones);
     }

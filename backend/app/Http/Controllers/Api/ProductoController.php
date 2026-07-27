@@ -27,7 +27,7 @@ class ProductoController extends Controller
             $query->where('categoria_id', $categoriaId);
         }
 
-        $productos = $query->orderBy('created_at', 'desc')->paginate(15);
+        $productos = $query->orderBy('created_at', 'desc')->get();
 
         return response()->json($productos);
     }
@@ -94,7 +94,7 @@ class ProductoController extends Controller
         $movimientos = MovimientoInventario::with('user')
             ->where('producto_id', $id)
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($movimientos);
     }

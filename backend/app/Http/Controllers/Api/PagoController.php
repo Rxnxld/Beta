@@ -53,7 +53,7 @@ class PagoController extends Controller
     {
         $pagos = Pago::with(['cuentaCobrar.cliente', 'cuentaCobrar.venta'])
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($pagos);
     }
@@ -62,7 +62,7 @@ class PagoController extends Controller
     {
         $pagos = Pago::where('cuenta_cobrar_id', $cuentaId)
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($pagos);
     }
