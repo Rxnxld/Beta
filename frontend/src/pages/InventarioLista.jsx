@@ -99,7 +99,7 @@ const InventarioLista = () => {
                   productos.map((p) => (
                     <tr key={p.id}>
                       <td className="fw-medium">{p.nombre}</td>
-                      <td>{p.categoria || '-'}</td>
+                      <td>{p.categoria?.nombre || '-'}</td>
                       <td className="fw-bold">{p.stock}</td>
                       <td>{p.stock_minimo || 5}</td>
                       <td>
