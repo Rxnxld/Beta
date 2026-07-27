@@ -1,8 +1,9 @@
 import axios from 'axios'
 
+const API_URL = import.meta.env.DEV ? '' : 'https://sistema-gestion-api-nott.onrender.com'
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '',
-  withCredentials: true,
+  baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
