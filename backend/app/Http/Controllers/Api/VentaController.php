@@ -36,7 +36,7 @@ class VentaController extends Controller
             $query->where('tipo', $tipo);
         }
 
-        $ventas = $query->orderBy('created_at', 'desc')->paginate(15);
+        $ventas = $query->orderBy('created_at', 'desc')->get();
 
         return response()->json($ventas);
     }

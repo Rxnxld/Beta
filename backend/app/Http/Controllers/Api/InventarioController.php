@@ -88,7 +88,7 @@ class InventarioController extends Controller
             $query->where('producto_id', $productoId);
         }
 
-        $movimientos = $query->orderBy('created_at', 'desc')->paginate(15);
+        $movimientos = $query->orderBy('created_at', 'desc')->get();
 
         return response()->json($movimientos);
     }

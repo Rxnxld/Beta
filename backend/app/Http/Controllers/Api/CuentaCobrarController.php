@@ -18,7 +18,7 @@ class CuentaCobrarController extends Controller
             $query->where('estado', $estado);
         }
 
-        $cuentas = $query->orderBy('created_at', 'desc')->paginate(15);
+        $cuentas = $query->orderBy('created_at', 'desc')->get();
 
         return response()->json($cuentas);
     }
@@ -55,7 +55,7 @@ class CuentaCobrarController extends Controller
         $cuentas = CuentaCobrar::with(['venta', 'pagos'])
             ->where('cliente_id', $clienteId)
             ->orderBy('created_at', 'desc')
-            ->paginate(15);
+            ->get();
 
         return response()->json($cuentas);
     }
