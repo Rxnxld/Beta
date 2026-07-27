@@ -4,7 +4,6 @@ const API_URL = import.meta.env.DEV ? '' : 'https://sistema-gestion-api-nott.onr
 
 const api = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
