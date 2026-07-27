@@ -60,8 +60,9 @@ const ClienteForm = () => {
         Swal.fire('Creado', 'Cliente creado correctamente', 'success')
       }
       navigate('/clientes')
-    } catch {
-      Swal.fire('Error', 'Error al guardar cliente', 'error')
+    } catch (err) {
+      const msg = err.response?.data?.message || err.response?.data?.error || JSON.stringify(err.response?.data?.errors) || 'Error al guardar cliente'
+      Swal.fire('Error', msg, 'error')
     } finally {
       setLoading(false)
     }
